@@ -19,7 +19,7 @@ namespace Utility {
         current: Node<E>
         visited: Set<E>
         edge: Heap<Node<E>>
-        
+
         iteration: number
         success?: boolean
     }
@@ -32,7 +32,7 @@ namespace Utility {
             current: current,
             visited: new Set<E>(problem.Equal),
             edge: new Heap<Node<E>>(),
-            
+
             iteration: 0,
         }
 
