@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/little-chick.svg" type="image/x-icon">
+    <link rel="stylesheet" href="./style/main.css">
+    <title>IA</title>
+
+    <script type="module" src="./script/main.js"></script>
+</head>
+
+<body id="root">
+    <nav id="navbar">
+        <div id="new-tab">+</div>
+    </nav>
+
+    <main id="content">
+        <section id="main">
+            <aside class="panel" id="inputs">
+                <label class="label" for="pause">Pausar</label>
+                <input class="input" type="checkbox" id="pause" checked>
+
+                <label class="label" for="speed">Velocidade</label>
+                <input class="input" type="range" min="10" max="1000" step="10" id="speed" value="100">
+
+                <label class="label" for="flash">Disparar</label>
+                <input class="input" type="checkbox" id="flash">
+
+                <label class="label" for="flash">Avancar</label>
+                <input class="input" type="button" id="step" value=">>">
+            </aside>
+
+            <section id="display">
+                <canvas id="canvas" width="1" height="1"></canvas>
+            </section>
+
+            <aside class="panel" id="outputs">
+                <span class="label">Iteração</span>
+                <span class="output" id="iteration-output">0</span>
+
+                <span class="label">Custo Acumulado</span>
+                <span class="output" id="accumulated-output">0</span>
+
+                <span class="label">Custo Estimado</span>
+                <span class="output" id="estimated-output">0</span>
+            </aside>
+        </section>
+
+        <footer id="footer">
+            Copyright &copy; 2025 Alan Lima &mdash; Repositório no <a href="https://github.com/alan-b-lima/ai" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </footer>
+    </main>
+
+    <dialog id="dialog">
+        <form>
+            <label class="field">
+                <span class="label">Aba</span>
+                <input class="input" type="text" autocomplete="off" id="tab" name="tab">
+            </label>
+
+            <label class="field">
+                <span class="label">Agente</span>
+                <select class="input" id="agent" name="agent"></select>
+            </label>
+
+            <label class="field">
+                <span class="label">Labirinto</span>
+                <select class="input" id="maze" name="maze"></select>
+            </label>
+
+            <button id="cancel">Cancelar</button>
+            <button id="submit">Criar</button>
+        </form>
+    </dialog>
+</body>
+
+</html>
