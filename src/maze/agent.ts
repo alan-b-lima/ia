@@ -57,9 +57,5 @@ export function ManhattanWithLookAhead(maze: Maze, goal: Point, from: Point): nu
         }
     }
 
-    if (count_lesser <= offsets.length / 2) {
-        return current
-    }
-
-    return current / 2
+    return (1 - (count_lesser + 1) / (offsets.length + 1)) * current
 }
