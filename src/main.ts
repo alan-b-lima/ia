@@ -1,25 +1,23 @@
 import GoalAgent from "./agents/present/goal.ts"
-import LearningAgent from "./agents/present/learning.ts"
 import ModelBasedReflexAgent from "./agents/present/model.ts"
 import SimpleReflexAgent from "./agents/present/simple.ts"
 import UtilityAgent from "./agents/present/utility.ts"
 import { AsyncTry } from "./error/try.ts"
-import { Euclidean, Manhattan, ManhattanWithLookAhead, GreedySearch as GreddySearch } from "./maze/agent.ts"
+import { Euclidean, GreedySearch as GreddySearch, Manhattan } from "./maze/agent.ts"
 import { MazeKeeper } from "./maze/keeper.ts"
 import { Maze } from "./maze/maze.ts"
 import { Orquestrator, Simulator } from "./tabs.ts"
 
 const Agents = {
-    "agente reativo simples": "SimpleReflexAgent",
-    "agente reativo baseado em modelo": "ModelBasedAgent",
-    "agente orientado a objetivo por profundidade": "DepthGoalAgent",
-    "agente orientado a objetivo por largura": "BreadthGoalAgent",
-    "agente orientado a objetivo por profundidade com memória": "DepthGoalAgentWithMemory",
-    "agente orientado a objetivo por largura com memória": "BreadthGoalAgentWithMemory",
-    "agente orientado a utilidade euclidiana": "EuclideanUtilityAgent",
-    "agente orientado a utilidade com Manhattan": "ManhattanUtilityAgent",
-    "agente orientado a utilidade com Manhattan espião": "ManhattanUtilityAgentWithLookAhead",
-    // "agente de aprendizado por reforço": "ReinforcementLearningAgent",
+    "reativo simples": "SimpleReflexAgent",
+    "reativo baseado em modelo": "ModelBasedAgent",
+    "orientado a objetivo por profundidade": "DepthGoalAgent",
+    "orientado a objetivo por largura": "BreadthGoalAgent",
+    "orientado a objetivo por profundidade com memória": "DepthGoalAgentWithMemory",
+    "orientado a objetivo por largura com memória": "BreadthGoalAgentWithMemory",
+    "orientado a utilidade euclidiana": "EuclideanUtilityAgent",
+    "orientado a utilidade com Manhattan": "ManhattanUtilityAgent",
+    "orientado a utilidade com Manhattan x1.5": "Manhattan1point5UtilityAgent",
 } as const
 
 const Mazes = {
@@ -33,6 +31,7 @@ const Mazes = {
     "estrela": "./mazes/star.txt",
     "gigante": "./mazes/gigantic.txt",
     "gigante 2": "./mazes/gigantic_2.txt",
+    "gigante 3": "./mazes/gigantic_3.txt",
     "onda": "./mazes/wave.txt",
 } as const
 
@@ -47,14 +46,12 @@ const AgentFactory: Record<typeof Agents[keyof typeof Agents], (maze: Maze) => S
 
     DepthGoalAgent: (maze: Maze) => new GoalAgent(maze, "DFS", false),
     DepthGoalAgentWithMemory: (maze: Maze) => new GoalAgent(maze, "DFS", true),
-
     BreadthGoalAgent: (maze: Maze) => new GoalAgent(maze, "BFS", false),
     BreadthGoalAgentWithMemory: (maze: Maze) => new GoalAgent(maze, "BFS", true),
 
     EuclideanUtilityAgent: (maze: Maze) => new UtilityAgent(maze, Euclidean),
     ManhattanUtilityAgent: (maze: Maze) => new UtilityAgent(maze, Manhattan),
-    ManhattanUtilityAgentWithLookAhead: (maze: Maze) => new UtilityAgent(maze, ManhattanWithLookAhead.bind(null, maze)),
-    // ReinforcementLearningAgent: (maze: Maze) => new LearningAgent(maze),
+    Manhattan1point5UtilityAgent: (maze: Maze) => new UtilityAgent(maze, (goal, from) => 1.5 * Manhattan(goal, from)),
 } as const
 
 function new_orquestrator() {
