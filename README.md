@@ -1,14 +1,20 @@
 # Trabalho Prático - Inteligência Artificial
 
+Esse trabalho implementa diversos agentes de inteligência artificial focadas em resolver diferentes tipos de labirintos.
+
+<div align="center">
+    <img src="./dist/assets/a-star.png" alt="A*"><br>
+    <span><em>Labirinto resolvido com A*</em></span>
+</div>
+
 1. Agente Reativo Simples
 2. Agente Reativo Baseado em Modelo
 3. Agente Baseado em Objetivo (Busca em Profundidade e Largura)
 4. Agente Baseado em Utilidade (A* com 3 Heurísticas)
-5. Agente de Aprendizado
 
 ## Instruções para Execução
 
-Acesse o site [Do Playground](https://alan-b-lima.github.io/ia) e crie um novo agente, escolhendo o tipo de agente e o labirinto desejado. Em seguida, pressione espaço para iniciar a simulação.
+Acesse o site [da Arena dos Agentes](https://alan-b-lima.github.io/ia) e crie um novo agente, escolhendo o tipo de agente e o labirinto desejado. Em seguida, pressione espaço para iniciar a simulação.
 
 ## Análise dos Agentes
 
